@@ -1,0 +1,29 @@
+{
+  "name": "sppn-gather",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MVP de escritorio virtual estilo Gather com avatares Habbo-like",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@colyseus/schema": "^3.0.76",
+    "@colyseus/ws-transport": "^0.16.5",
+    "@slack/bolt": "^5.0.0",
+    "colyseus": "^0.16.5",
+    "colyseus.js": "^0.16.22",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "googleapis": "^174.0.1",
+    "phaser": "^3.90.0"
+  },
+  "overrides": {
+    "@colyseus/greeting-banner": "4.0.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.62.1"
+  }
+}

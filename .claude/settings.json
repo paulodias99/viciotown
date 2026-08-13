@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm init *)",
+      "Bash(npm install *)",
+      "Bash(node \"/private/tmp/claude-501/-Users-paulodias-vicio-sppn/f5d4500d-9ed9-4d22-bb3f-1678b269327e/scratchpad/fix-regex.js\")",
+      "Bash(node -e ' *)"
+    ]
+  }
+}
