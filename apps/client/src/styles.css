@@ -1,0 +1,139 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink-950: #0b0d12;
+  --color-ink-900: #14161c;
+  --color-ink-800: #1b1f27;
+  --color-ink-700: #242934;
+  --color-ink-600: #333a48;
+  --color-ink-500: #4a5263;
+  --color-ink-400: #6b7385;
+  --color-ink-300: #98a0b0;
+  --color-ink-200: #c8cdd8;
+
+  --color-grape-600: #4a2f7a;
+  --color-grape-500: #6b46a8;
+  --color-grape-400: #8e5cd9;
+  --color-grape-300: #b08ee8;
+
+  --color-amber-brand: #f0b93a;
+  --color-mint: #3fae63;
+  --color-flame: #e0433f;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-panel: 14px;
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-ink-950);
+    color: var(--color-ink-200);
+    /* `overscroll-none` impede o "puxar para atualizar" do Chrome mobile de
+       disparar quando a pessoa arrasta a câmera do jogo. */
+    overscroll-behavior: none;
+  }
+
+  /* O canvas consome os gestos; sem isto o navegador tenta rolar/zoom nativo. */
+  canvas {
+    touch-action: none;
+    display: block;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  /* iOS dá zoom automático em campos com fonte < 16px ao focar. */
+  @media (max-width: 1023px) {
+    input,
+    textarea,
+    select {
+      font-size: 16px;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-600);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@utility safe-bottom {
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+}
+
+@utility safe-top {
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+}
+
+@utility panel {
+  background: color-mix(in srgb, var(--color-ink-900) 92%, transparent);
+  border: 1px solid var(--color-ink-700);
+  border-radius: var(--radius-panel);
+  backdrop-filter: blur(12px);
+}
+
+@keyframes vt-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes vt-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility animate-rise {
+  animation: vt-rise 0.22s ease-out;
+}
+
+@utility animate-pop {
+  animation: vt-pop 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

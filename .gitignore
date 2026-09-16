@@ -2,3 +2,9 @@ node_modules/
 key/
 .env
 .DS_Store
+dist/
+dist-types/
+data/
+*.tsbuildinfo
+dev-dist/
+.vite/

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": false,
+
+    /* Colyseus schema usa decorators legados (`@type`). `useDefineForClassFields`
+       precisa ficar desligado: com ES2022 o padrão é `true`, e aí os campos da
+       classe viram `defineProperty` que sobrescrevem os getters/setters que o
+       decorator instalou — o estado simplesmente não sincroniza. */
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "composite": true,
+    "incremental": true
+  }
+}
